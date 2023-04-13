@@ -1,4 +1,4 @@
-.keyboard-keys {
+.keyboard{
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     gap: 10px;
@@ -7,7 +7,7 @@
     border: 1px solid #ccc;
     border-radius: 5px;
   }
-  .key {
+  .key{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -17,7 +17,7 @@
     border-radius: 5px;
     cursor: pointer;
   }
-  .key:hover {
+  .keyboard-keys :hover {
     background-color: #ddd;
   }
   .wide {

@@ -130,11 +130,11 @@ class Keyboard extends Component {
     const keyboard = this.state.language === 'english' ? EnglishKeys : HebrewKeys;
     return (                   
         <div className="keyboard-container">
-             <ChangeLang onLanguageChange={this.handleLanguageChange} />            
+             {/* <ChangeLang onLanguageChange={this.handleLanguageChange} />             */}
 
-          <div className="keyboard-keys">
+          <div className="keyboard keys">
             {keyboard.map((key, index) => {
-              let classes = 'keyboard-key';
+              let classes = 'keyboard key';
               if (key.value === 'DEL') classes += ' keyboard-delete';
               if (key.value === 'SPACE') classes += ' keyboard-space';
               if (key.value === 'CAPSLOCK') classes += ' keyboard-capslock';
