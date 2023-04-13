@@ -1,17 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Counter  from '../src/Components/counter';
 import TextEditor from './Components/textEditor';
 import Keyboard from './Components/keyboard';
+import Size from './Components/sizes';
+import TextArea from './Components/textArea';
+import ColorPalette from './Components/colorPalette';
+import SpecialSetting from './Components/specialSetting';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Keyboard/>
+    <TextEditor/>
   </React.StrictMode>
 );
 
