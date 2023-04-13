@@ -7,7 +7,7 @@ class Size extends Component {
     render() {
         return (
             <div>
-                <input type="range" min="1" max="36" class="slider" />
+                <input type="range" min="1" max="36" className="slider" />
             </div>
         );
     }

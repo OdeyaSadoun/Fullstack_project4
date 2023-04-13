@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../CSS/colorPalette.css';
 
 class ColorPalette extends Component {
   constructor(props) {
@@ -7,10 +8,15 @@ class ColorPalette extends Component {
 
   }  render() { 
     const colors = [
+      "#000000", //black
+      "#808080", //gray
       "#FF0000", // red
+      "#731800", // bordo
+      "#FFB6C1", //pink
       "#FFA500", // orange
       "#FFFF00", // yellow
       "#008000", // green
+      "#00CED1", // 
       "#0000FF", // blue
       "#4B0082", // indigo
       "#EE82EE"  // violet
@@ -22,7 +28,7 @@ class ColorPalette extends Component {
     };
   
     return (
-      <div className='colorText' style={{ display: "flex", flexWrap: "wrap" }}>
+      <div className='colorText'>
         {colors.map((color, index) => (
           <div className='currentColor'
             key={index}
