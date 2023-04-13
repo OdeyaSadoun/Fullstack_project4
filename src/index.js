@@ -5,13 +5,13 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Counter  from '../src/Components/counter';
 import TextEditor from './Components/textEditor';
+import Keyboard from './Components/keyboard';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Counter/>
-    <TextEditor />
+    <Keyboard/>
   </React.StrictMode>
 );
 
