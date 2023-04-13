@@ -9,12 +9,13 @@ import Keyboard from './Components/keyboard';
 import Size from './Components/sizes';
 import TextArea from './Components/textArea';
 import ColorPalette from './Components/colorPalette';
+import SpecialSetting from './Components/specialSetting';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ColorPalette/>
+    <SpecialSetting/>
   </React.StrictMode>
 );
 
