@@ -7,12 +7,13 @@ import Counter  from '../src/Components/counter';
 import TextEditor from './Components/textEditor';
 import Keyboard from './Components/keyboard';
 import Size from './Components/sizes';
+import TextArea from './Components/textArea';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Size/>
+    <TextArea/>
   </React.StrictMode>
 );
 
