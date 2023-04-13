@@ -1,4 +1,4 @@
-#keyboard {
+.keyboard-keys {
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     gap: 10px;
