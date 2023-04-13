@@ -1,17 +1,5 @@
 import React, { Component } from 'react';
 
-class TextEditor extends Component {
-  render() {
-    return (
-      <div>
-        {/* Add your text editor UI elements here */}
-      </div>
-    );
-  }
-}
-
-
-
 
 class TextEditor extends Component {
     constructor(props) {

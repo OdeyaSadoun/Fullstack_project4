@@ -4,13 +4,13 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Counter  from '../src/Components/counter';
-import TextEditor from './Components/TextEditor';
+import TextEditor from './Components/textEditor';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    
+    <Counter/>
     <TextEditor />
   </React.StrictMode>
 );
