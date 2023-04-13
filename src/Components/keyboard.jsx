@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import '../CSS/keyboard.css';
-
-
+import ChangeLang from './changeLang';
 
 class Keyboard extends Component {
   state = {
     text: '',
-    language: 'english'
+    language: 'english',
+    capslock: false
   };
 
   handleChange = event => {
@@ -14,6 +14,7 @@ class Keyboard extends Component {
   };
 
   handleLanguageChange = event => {
+    console.log('event.target', event.target,'event.target.value',event.target.value );
     this.setState({ language: event.target.value });
   };
 
@@ -26,15 +27,66 @@ class Keyboard extends Component {
       this.setState(prevState => ({
         text: prevState.text + ' '
       }));
+    } else if (key === 'CAPSLOCK') {
+        this.setState(prevState => ({
+          capslock: !prevState.capslock
+        }));
     } else {
-      this.setState(prevState => ({
-        text: prevState.text + key
-      }));
+        const letter = this.state.capslock ? key.toUpperCase() : key.toLowerCase();
+        this.setState(prevState => ({
+          text: prevState.text + letter
+        }));
     }
   };
 
   render() {
-    let keys = [
+    
+    let HebrewKeys = [
+        { label: '1', value: '1' },
+        { label: '2', value: '2' },
+        { label: '3', value: '3' },
+        { label: '4', value: '4' },
+        { label: '5', value: '5' },
+        { label: '6', value: '6' },
+        { label: '7', value: '7' },
+        { label: '8', value: '8' },
+        { label: '9', value: '9' },
+        { label: '0', value: '0' },
+        { label: '/', value: '/' },
+        { label: "'", value: '\'' },
+        { label: 'ק', value: 'ק' },
+        { label: 'ר', value: 'ר' },
+        { label: 'א', value: 'א' },
+        { label: 'ט', value: 'ט' },
+        { label: 'ו', value: 'ו' },
+        { label: 'ן', value: 'ן' },
+        { label: 'ם', value: 'ם' },
+        { label: 'פ', value: 'פ' },
+        { label: 'ש', value: 'ש' },
+        { label: 'ד', value: 'ד' },
+        { label: 'ג', value: 'ג' },
+        { label: 'כ', value: 'כ' },
+        { label: 'ע', value: 'ע' },
+        { label: 'י', value: 'י' },
+        { label: 'ח', value: 'ח' },
+        { label: 'ל', value: 'ל' },
+        { label: 'ך', value: 'ך' },
+        { label: 'ף', value: 'ף' },
+        { label: 'ז', value: 'ז' },
+        { label: 'ס', value: 'ס' },
+        { label: 'ב', value: 'ב' },
+        { label: 'ה', value: 'ה' },
+        { label: 'נ', value: 'נ' },
+        { label: 'מ', value: 'מ' },
+        { label: 'צ', value: 'צ' },
+        { label: 'ת', value: 'ת' },
+        { label: 'ץ', value: 'ץ' },
+        { label: 'DEL', value: 'DEL' },
+        { label: 'SPACE', value: 'SPACE' },
+        { label: 'CAPSLOCK', value: 'CAPSLOCK' }
+      ];
+
+    let EnglishKeys = [
       { label: '1', value: '1' },
       { label: '2', value: '2' },
       { label: '3', value: '3' },
@@ -72,47 +124,33 @@ class Keyboard extends Component {
       { label: 'N', value: 'N' },
       { label: 'M', value: 'M' },
       { label: 'DEL', value: 'DEL' },
-      { label: 'SPACE', value: 'SPACE' }
+      { label: 'SPACE', value: 'SPACE' },
+      { label: 'CAPSLOCK', value: 'CAPSLOCK' }    
     ];
+    const keyboard = this.state.language === 'english' ? EnglishKeys : HebrewKeys;
+    return (                   
+        <div className="keyboard-container">
+             <ChangeLang onLanguageChange={this.handleLanguageChange} />            
 
-    return (
-        <React.Fragment>
-          <div id="keyboard">
-            {keys.map(key => (
-              <div
-                key={key.value}
-                className={`key ${key.value === 'SPACE' ? 'space' : ''} ${
-                  key.value === 'DEL' ? 'del' : ''
-                }`}
-                onClick={() => this.handleKeyPress(key.value)}
-              >
-                {key.label}
-              </div>
-            ))}
+          <div className="keyboard-keys">
+            {keyboard.map((key, index) => {
+              let classes = 'keyboard-key';
+              if (key.value === 'DEL') classes += ' keyboard-delete';
+              if (key.value === 'SPACE') classes += ' keyboard-space';
+              if (key.value === 'CAPSLOCK') classes += ' keyboard-capslock';
+              return (
+                <button
+                  key={index}
+                  className={classes}
+                  onClick={() => this.handleKeyPress(key.value)}
+                >
+                  {this.state.capslock ? key.value.toUpperCase() : key.value.toLowerCase()}
+                </button>
+              );
+            })}
           </div>
-          <div id="input-container">
-            <input
-              type="text"
-              value={this.state.text}
-              onChange={this.handleChange}
-              placeholder="Type here..."
-            />
-          </div>
-          <div id="language-container">
-            <label htmlFor="language-select">Language:</label>
-            <select
-              id="language-select"
-              value={this.state.language}
-              onChange={this.handleLanguageChange}
-            >
-              <option value="english">English</option>
-              <option value="french">French</option>
-              <option value="spanish">Spanish</option>
-            </select>
-          </div>
-        </React.Fragment>
-      );
-      
+        </div>
+      );      
   }
 }
 
