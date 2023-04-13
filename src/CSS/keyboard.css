@@ -1,26 +1,25 @@
-.keyboard{
-    display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    gap: 10px;
-    padding: 10px;
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  .key{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 50px;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  .keyboard-keys :hover {
-    background-color: #ddd;
-  }
-  .wide {
-    grid-column: span 2;
-  }
-  
+.keyboard {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 10px;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.key {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.keyboard :hover {
+  background-color: #ddd;
+}
+.wide {
+  grid-column: span 2;
+}
