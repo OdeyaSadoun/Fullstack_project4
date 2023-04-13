@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
+
 class ColorPalette extends Component {
-  state = {  } 
-  render() { 
+  constructor(props) {
+    super(props);
+    this.state = {color: "black"};
+
+  }  render() { 
     const colors = [
       "#FF0000", // red
       "#FFA500", // orange
@@ -18,9 +22,9 @@ class ColorPalette extends Component {
     };
   
     return (
-      <div style={{ display: "flex", flexWrap: "wrap" }}>
+      <div className='colorText' style={{ display: "flex", flexWrap: "wrap" }}>
         {colors.map((color, index) => (
-          <div
+          <div className='currentColor'
             key={index}
             style={{
               width: "50px",

@@ -1,37 +1,25 @@
 import React, { Component } from 'react';
-
+import Keyboard from './keyboard';
+import Size from './sizes';
+import TextArea from './textArea';
+import ColorPalette from './colorPalette';
+import SpecialSetting from './specialSetting';
 
 class TextEditor extends Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-        text: '',
-        language: 'english',
-      };
-    }
-  
-    handleChange = (event) => {
-      this.setState({ text: event.target.value });
-    };
+  render() {
+    return (
+      <div className="keyboard-container">
+        <TextArea />
+        <Keyboard />
+        <Size />
+        <ColorPalette />
+        <SpecialSetting />
 
-    handleLanguageChange = (event) => {
-      this.setState({ language: event.target.value });
-    };
-  
-    handleSave = () => {
-      // TODO: Implement file saving logic
-    };
-  
-    render() {
-      return (
-        <div>
-          <textarea value={this.state.text} onChange={this.handleChange} />
-          <button onClick={this.handleSave}>Save</button>
-        </div>
-      );
-    }
-
-
+      </div>
+    );
   }
-  
+
+
+}
+
 export default TextEditor;

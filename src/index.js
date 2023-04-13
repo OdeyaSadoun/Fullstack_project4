@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Counter  from '../src/Components/counter';
@@ -15,7 +16,7 @@ import SpecialSetting from './Components/specialSetting';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <SpecialSetting/>
+    <TextEditor/>
   </React.StrictMode>
 );
 
