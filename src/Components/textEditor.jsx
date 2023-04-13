@@ -6,11 +6,16 @@ class TextEditor extends Component {
       super(props);
       this.state = {
         text: '',
+        language: 'english',
       };
     }
   
     handleChange = (event) => {
       this.setState({ text: event.target.value });
+    };
+
+    handleLanguageChange = (event) => {
+      this.setState({ language: event.target.value });
     };
   
     handleSave = () => {
@@ -25,6 +30,8 @@ class TextEditor extends Component {
         </div>
       );
     }
+
+
   }
   
 export default TextEditor;
