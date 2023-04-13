@@ -6,12 +6,13 @@ import reportWebVitals from './reportWebVitals';
 import Counter  from '../src/Components/counter';
 import TextEditor from './Components/textEditor';
 import Keyboard from './Components/keyboard';
+import Size from './Components/sizes';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Keyboard/>
+    <Size/>
   </React.StrictMode>
 );
 
