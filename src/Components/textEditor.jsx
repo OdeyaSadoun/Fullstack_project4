@@ -11,17 +11,21 @@ class TextEditor extends Component {
     super(props);
     console.log('textEditor-ctor', props);
     this.state = {
-      text: '222',
+      text: '',
       language: 'english',
       capslock: false
     }
   }
-  handleClick = (text) => {
+  handleClickTextArea = (text) => {
     this.setState({
       text: this.state.text + text
     });
   }
 
+  handleButtonSpecialSettingClick = (text) => {
+    console.log('special-buttons', text)
+    this.setState({ text: text });
+  }
   // // function to update the color displayed in Component A
   // changeColor = (color) => {
   //   this.setState({ color });
@@ -42,10 +46,10 @@ class TextEditor extends Component {
       <div className="keyboard-container">
         <TextArea text={this.state.text} />
         <ChangeLang language={language} onChange={this.handleLanguageChange} />
-        <Keyboard language={language} text={this.state.text} onClick={this.handleClick} />
+        <Keyboard language={language} text={this.state.text} onClick={this.handleClickTextArea} />
         <Size />
         <ColorPalette />
-        <SpecialSetting />
+        <SpecialSetting text={this.state.text} onClick={this.handleButtonSpecialSettingClick} />
 
       </div>
     );

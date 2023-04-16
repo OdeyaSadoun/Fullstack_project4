@@ -4,32 +4,40 @@ import '../CSS/specialSetting.css';
 class SpecialSetting extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            text: ''        };
+        console.log('SpecialSetting - ctor',props)
+        this.state={
+            text: this.props.text
+        }
     }
 
-    handleKeyPress = key => {
+    handleClick = key => {
+        let {text} = this.state;
+
+        console.log('text', text)
         if (key === 'Clear all') {
-            this.setState({ text: '' });
+            text = '';
         } else if (key === 'Upper all') {
-            this.setState(prevState => ({
-                text: prevState.text.toUpperCase()
-            }));
+            text = text.toUpperCase();
         } else if (key === 'Lower all') {
-            this.setState(prevState => ({
-                text: prevState.text.toLowerCase()
-            }));
+            text = text.toLowerCase();
         }
+        this.props.onClick(text);
     };
 
+
+
     render() {
-        let options = [
-            { label: 'Clear all', value: 'Clear all' },
-            { label: 'Upper all', value: 'Upper all' },
-            { label: 'Lower all', value: 'Lower all' }
-        ];
+        // let options = [
+        //     { label: 'Clear all', value: 'Clear all' },
+        //     { label: 'Upper all', value: 'Upper all' },
+        //     { label: 'Lower all', value: 'Lower all' }
+        // ];
         return (
-            <div className="options-container">
+            <div className="options-container option specials">
+                <button className='option-clear-all' value={'Clear all'} onClick={() => this.handleClick('Clear all')}>Clear all</button>
+                <button className='option-upper-all' value={'Upper all'} onClick={() => this.handleClick('Upper all')}>Upper all</button>
+                <button className='option-lower-all' value={'Lower all'} onClick={() => this.handleClick('Lower all')}>Lower all</button>
+                {/* 
                 {options.map((key, index) => {
                     let classes = 'option specials';
                     if (key.value === 'Clear all') classes += 'option-clear-all';
@@ -40,12 +48,12 @@ class SpecialSetting extends Component {
                         <button
                             key={index}
                             className={classes}
-                            onClick={() => this.handleKeyPress(key.value)}
+                            onClick={() => this.handleButtonSpecialSettingClick(key.value)}
                         >
                             {key.value}
                         </button>
                     );
-                })}
+                })} */}
             </div>
         );
     }
