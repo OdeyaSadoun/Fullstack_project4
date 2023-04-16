@@ -49,7 +49,7 @@ class TextEditor extends Component {
         <Keyboard language={language} text={this.state.text} onClick={this.handleClickTextArea} />
         <Size />
         <ColorPalette />
-        <SpecialSetting text={this.state.text} onClick={this.handleButtonSpecialSettingClick} />
+        <SpecialSetting language={language} text={this.state.text} onClick={this.handleButtonSpecialSettingClick} />
 
       </div>
     );
