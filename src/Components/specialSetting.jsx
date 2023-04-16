@@ -4,22 +4,26 @@ import '../CSS/specialSetting.css';
 class SpecialSetting extends Component {
     constructor(props) {
         super(props);
-        console.log('SpecialSetting - ctor',props)
-        this.state={
-            text: this.props.text
+        console.log('SpecialSetting - ctor', props)
+        this.state = {
+            text: this.props.text,
+            language: this.props.language
         }
     }
 
     handleClick = key => {
-        let {text} = this.state;
-
-        console.log('text', text)
-        if (key === 'Clear all') {
-            text = '';
-        } else if (key === 'Upper all') {
-            text = text.toUpperCase();
-        } else if (key === 'Lower all') {
-            text = text.toLowerCase();
+        let { text, language } = this.props; //for real time updates
+        console.log('text', text);
+        if (language === 'english') {
+            if (key === 'Clear all') {
+                text = '';
+            } else if (key === 'Upper all') {
+                console.log('upper', text);
+                text = text.toUpperCase();
+            } else if (key === 'Lower all') {
+                console.log('lower', text);
+                text = text.toLowerCase();
+            }
         }
         this.props.onClick(text);
     };
