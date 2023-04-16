@@ -1,11 +1,24 @@
 import React, { Component } from 'react';
+import Keyboard from './keyboard';
+import ChangeLang from './changeLang';
 class TextArea extends Component {
-    state = {
-        text: 'This is the text from keyboard'
+    constructor(props) {
+        super(props);
+        console.log('textarea-ctor', props);
+        this.state = {
+            text: ''
+        };
+    }
+    updateText = (value) => {
+        this.setState({
+            text: this.state.text + value
+        });
     }
     render() {
         return (
-            <p >{this.state.text}</p>
+            <div>
+                <p >{this.state.text}</p>
+            </div>
         );
     }
 }

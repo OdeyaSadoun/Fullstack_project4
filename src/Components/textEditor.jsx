@@ -7,28 +7,37 @@ import SpecialSetting from './specialSetting';
 import ChangeLang from './changeLang';
 
 class TextEditor extends Component {
-  state = {
-    text: '',
-    setText: '',
-    deleteClicked: false,
-    setDeleteClicked: false,
-    language: 'english'
+  constructor(props) {
+    super(props);
+    console.log('textEditor-ctor', props);
+    this.state = {
+      text: '',
+      language: 'english',
+      capslock: false
+    }
   }
 
-  // handleTextChange(newText) {
-  //   setText(newText);
+    // // function to update the color displayed in Component A
+  // changeColor = (color) => {
+  //   this.setState({ color });
   // }
 
-  // handleDeleteClick() {
-  //   setDeleteClicked(true);
+  // // function to update the font size displayed in Component A
+  // changeFontSize = (fontSize) => {
+  //   this.setState({ fontSize });
   // }
+
+  handleLanguageChange = (language) => {
+    this.setState({ language: language, capslock: false  });
+  }
 
   render() {
+    const {language} = this.state;
     return (
       <div className="keyboard-container">
         <TextArea  value={this.state.text} />
-        <ChangeLang />
-        {/* <Keyboard   /> */}
+        <ChangeLang language={language} onChange={this.handleLanguageChange} />
+        <Keyboard language={language} />
         <Size />
         <ColorPalette />
         <SpecialSetting />
@@ -36,8 +45,6 @@ class TextEditor extends Component {
       </div>
     );
   }
-
-
 }
 
 export default TextEditor;

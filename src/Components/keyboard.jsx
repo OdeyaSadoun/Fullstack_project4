@@ -1,20 +1,25 @@
 import React, { Component } from 'react';
 import '../CSS/keyboard.css';
 import ChangeLang from './changeLang';
+import TextArea from './textArea';
 
 class Keyboard extends Component {
   constructor(props) {
     super(props);
-    // console.log(props);
+    console.log('keyboard-ctor', props);
+    console.log(props);
     this.state = {
-    //   text: '',
-      capslock: false
-    //   language: props
+      capslock: false,
+      text: this.props.text
     }
   }
 
   handleChange = event => {
     this.setState({ text: event.target.value });
+  };
+  handleClick = (value) => {
+    console.log(`Selected key: ${value}`);
+    // this.props.updateText(value);
   };
 
   handleKeyPress = key => {
@@ -129,7 +134,6 @@ class Keyboard extends Component {
     const keyboard = this.props.language === 'english' ? EnglishKeys : HebrewKeys;
     return (
       <div className="keyboard-container">
-        
 
         <div className="keyboard keys">
           {keyboard.map((key, index) => {
@@ -141,8 +145,7 @@ class Keyboard extends Component {
               <button
                 key={index}
                 className={classes}
-                onClick={() => this.handleKeyPress(key.value)}
-              >
+                onClick={() => { this.handleKeyPress(key.value);}}              >
                 {this.state.capslock ? key.value.toUpperCase() : key.value.toLowerCase()}
               </button>
             );
