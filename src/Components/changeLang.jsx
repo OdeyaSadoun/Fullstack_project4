@@ -8,7 +8,7 @@ class ChangeLang extends Component {
     // console.log('changlang-ctor', props);
   }
 
-  handleChange = (event) => {
+  handleChange = (event) => { //change language
     const language = event.target.value;
     this.props.onChange(language);
   }
