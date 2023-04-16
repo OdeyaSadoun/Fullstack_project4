@@ -7,12 +7,28 @@ import SpecialSetting from './specialSetting';
 import ChangeLang from './changeLang';
 
 class TextEditor extends Component {
+  state = {
+    text: '',
+    setText: '',
+    deleteClicked: false,
+    setDeleteClicked: false,
+    language: 'english'
+  }
+
+  // handleTextChange(newText) {
+  //   setText(newText);
+  // }
+
+  // handleDeleteClick() {
+  //   setDeleteClicked(true);
+  // }
+
   render() {
     return (
       <div className="keyboard-container">
-        <TextArea />
-        <ChangeLang/>
-        <Keyboard />
+        <TextArea  value={this.state.text} />
+        <ChangeLang />
+        {/* <Keyboard   /> */}
         <Size />
         <ColorPalette />
         <SpecialSetting />

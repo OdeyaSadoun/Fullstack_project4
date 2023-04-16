@@ -3,19 +3,18 @@ import '../CSS/keyboard.css';
 import ChangeLang from './changeLang';
 
 class Keyboard extends Component {
-  state = {
-    text: '',
-    language: 'english',
-    capslock: false
-  };
+  constructor(props) {
+    super(props);
+    // console.log(props);
+    this.state = {
+    //   text: '',
+      capslock: false
+    //   language: props
+    }
+  }
 
   handleChange = event => {
     this.setState({ text: event.target.value });
-  };
-
-  handleLanguageChange = event => {
-    console.log('event.target', event.target,'event.target.value',event.target.value );
-    this.setState({ language: event.target.value });
   };
 
   handleKeyPress = key => {
@@ -28,63 +27,63 @@ class Keyboard extends Component {
         text: prevState.text + ' '
       }));
     } else if (key === 'CAPSLOCK') {
-        this.setState(prevState => ({
-          capslock: !prevState.capslock
-        }));
+      this.setState(prevState => ({
+        capslock: !prevState.capslock
+      }));
     } else {
-        const letter = this.state.capslock ? key.toUpperCase() : key.toLowerCase();
-        this.setState(prevState => ({
-          text: prevState.text + letter
-        }));
+      const letter = this.state.capslock ? key.toUpperCase() : key.toLowerCase();
+      this.setState(prevState => ({
+        text: prevState.text + letter
+      }));
     }
   };
 
   render() {
-    
+
     let HebrewKeys = [
-        { label: '1', value: '1' },
-        { label: '2', value: '2' },
-        { label: '3', value: '3' },
-        { label: '4', value: '4' },
-        { label: '5', value: '5' },
-        { label: '6', value: '6' },
-        { label: '7', value: '7' },
-        { label: '8', value: '8' },
-        { label: '9', value: '9' },
-        { label: '0', value: '0' },
-        { label: '/', value: '/' },
-        { label: "'", value: '\'' },
-        { label: 'ק', value: 'ק' },
-        { label: 'ר', value: 'ר' },
-        { label: 'א', value: 'א' },
-        { label: 'ט', value: 'ט' },
-        { label: 'ו', value: 'ו' },
-        { label: 'ן', value: 'ן' },
-        { label: 'ם', value: 'ם' },
-        { label: 'פ', value: 'פ' },
-        { label: 'ש', value: 'ש' },
-        { label: 'ד', value: 'ד' },
-        { label: 'ג', value: 'ג' },
-        { label: 'כ', value: 'כ' },
-        { label: 'ע', value: 'ע' },
-        { label: 'י', value: 'י' },
-        { label: 'ח', value: 'ח' },
-        { label: 'ל', value: 'ל' },
-        { label: 'ך', value: 'ך' },
-        { label: 'ף', value: 'ף' },
-        { label: 'ז', value: 'ז' },
-        { label: 'ס', value: 'ס' },
-        { label: 'ב', value: 'ב' },
-        { label: 'ה', value: 'ה' },
-        { label: 'נ', value: 'נ' },
-        { label: 'מ', value: 'מ' },
-        { label: 'צ', value: 'צ' },
-        { label: 'ת', value: 'ת' },
-        { label: 'ץ', value: 'ץ' },
-        { label: 'DEL', value: 'DEL' },
-        { label: 'SPACE', value: 'SPACE' },
-        { label: 'CAPSLOCK', value: 'CAPSLOCK' }
-      ];
+      { label: '1', value: '1' },
+      { label: '2', value: '2' },
+      { label: '3', value: '3' },
+      { label: '4', value: '4' },
+      { label: '5', value: '5' },
+      { label: '6', value: '6' },
+      { label: '7', value: '7' },
+      { label: '8', value: '8' },
+      { label: '9', value: '9' },
+      { label: '0', value: '0' },
+      { label: '/', value: '/' },
+      { label: "'", value: '\'' },
+      { label: 'ק', value: 'ק' },
+      { label: 'ר', value: 'ר' },
+      { label: 'א', value: 'א' },
+      { label: 'ט', value: 'ט' },
+      { label: 'ו', value: 'ו' },
+      { label: 'ן', value: 'ן' },
+      { label: 'ם', value: 'ם' },
+      { label: 'פ', value: 'פ' },
+      { label: 'ש', value: 'ש' },
+      { label: 'ד', value: 'ד' },
+      { label: 'ג', value: 'ג' },
+      { label: 'כ', value: 'כ' },
+      { label: 'ע', value: 'ע' },
+      { label: 'י', value: 'י' },
+      { label: 'ח', value: 'ח' },
+      { label: 'ל', value: 'ל' },
+      { label: 'ך', value: 'ך' },
+      { label: 'ף', value: 'ף' },
+      { label: 'ז', value: 'ז' },
+      { label: 'ס', value: 'ס' },
+      { label: 'ב', value: 'ב' },
+      { label: 'ה', value: 'ה' },
+      { label: 'נ', value: 'נ' },
+      { label: 'מ', value: 'מ' },
+      { label: 'צ', value: 'צ' },
+      { label: 'ת', value: 'ת' },
+      { label: 'ץ', value: 'ץ' },
+      { label: 'DEL', value: 'DEL' },
+      { label: 'SPACE', value: 'SPACE' },
+      { label: 'CAPSLOCK', value: 'CAPSLOCK' }
+    ];
 
     let EnglishKeys = [
       { label: '1', value: '1' },
@@ -125,32 +124,32 @@ class Keyboard extends Component {
       { label: 'M', value: 'M' },
       { label: 'DEL', value: 'DEL' },
       { label: 'SPACE', value: 'SPACE' },
-      { label: 'CAPSLOCK', value: 'CAPSLOCK' }    
+      { label: 'CAPSLOCK', value: 'CAPSLOCK' }
     ];
-    const keyboard = this.state.language === 'english' ? EnglishKeys : HebrewKeys;
-    return (                   
-        <div className="keyboard-container">
-             {/* <ChangeLang onLanguageChange={this.handleLanguageChange} />             */}
+    const keyboard = this.props.language === 'english' ? EnglishKeys : HebrewKeys;
+    return (
+      <div className="keyboard-container">
+        
 
-          <div className="keyboard keys">
-            {keyboard.map((key, index) => {
-              let classes = 'keyboard key';
-              if (key.value === 'DEL') classes += ' keyboard-delete';
-              if (key.value === 'SPACE') classes += ' keyboard-space';
-              if (key.value === 'CAPSLOCK') classes += ' keyboard-capslock';
-              return (
-                <button
-                  key={index}
-                  className={classes}
-                  onClick={() => this.handleKeyPress(key.value)}
-                >
-                  {this.state.capslock ? key.value.toUpperCase() : key.value.toLowerCase()}
-                </button>
-              );
-            })}
-          </div>
+        <div className="keyboard keys">
+          {keyboard.map((key, index) => {
+            let classes = 'keyboard key';
+            if (key.value === 'DEL') classes += ' keyboard-delete';
+            if (key.value === 'SPACE') classes += ' keyboard-space';
+            if (key.value === 'CAPSLOCK') classes += ' keyboard-capslock';
+            return (
+              <button
+                key={index}
+                className={classes}
+                onClick={() => this.handleKeyPress(key.value)}
+              >
+                {this.state.capslock ? key.value.toUpperCase() : key.value.toLowerCase()}
+              </button>
+            );
+          })}
         </div>
-      );      
+      </div>
+    );
   }
 }
 

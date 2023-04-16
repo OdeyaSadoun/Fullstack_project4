@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import Keyboard from './keyboard';
 
 class ChangeLang extends Component {
   state = {
-    language: 'English', // Default language
+    language: 'english', // Default language
   }
 
   handleLanguageChange = (event) => {
@@ -15,10 +16,11 @@ class ChangeLang extends Component {
     return (
       <div>
         <label htmlFor="language">Select language:</label>
-        <select id="language" name="language" value={language} onChange={this.handleLanguageChange}>
-          <option value="English">English</option>
-          <option value="Hebrew">Hebrew</option>
+        <select id="language" className="language" value={language} onChange={this.handleLanguageChange}>
+          <option value="english">English</option>
+          <option value="hebrew">Hebrew</option>
         </select>
+        <Keyboard language={language} />
       </div>
     );
   }
