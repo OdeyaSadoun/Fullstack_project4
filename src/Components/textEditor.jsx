@@ -15,13 +15,14 @@ class TextEditor extends Component {
       setText: '',
       language: 'english',
       color: 'black',
-      capslock: false
+      capslock: false,
+      fontSize: 11
     }
   }
   setTextFunc = (text) => {
     this.state.text = text;
   }
-  
+
   handleClickTextArea = (text) => {
     this.setState({
       text: this.state.text + text
@@ -38,25 +39,25 @@ class TextEditor extends Component {
     this.setState({ color: color });
   }
 
-  // // function to update the font size displayed in Component A
-  // changeFontSize = (fontSize) => {
-  //   this.setState({ fontSize });
-  // }
+  // function to update the font size displayed in Component A
+  changeFontSize = (fontSize) => {
+    this.setState({ fontSize: fontSize });
+  }
 
   handleLanguageChange = (language) => {
     this.setState({ language: language, capslock: false });
   }
 
   render() {
-    const { language, color } = this.state;
+    const { language, color, fontSize } = this.state;
     return (
       <div className="keyboard-container">
-        <TextArea text={this.state.text} color={color }/>
+        <TextArea text={this.state.text} color={color} />
         <ChangeLang language={language} onChange={this.handleLanguageChange} />
         <Keyboard language={language} text={this.state.text} onClick={this.handleClickTextArea} />
-        <Size />
+        <Size fontSize={fontSize} onClick={this.changeFontSize} />
         <ColorPalette onClick={this.onHandleChangeColor} />
-        <SpecialSetting language={language} text={this.state.text} setText ={this.setTextFunc} onClick={this.handleButtonSpecialSettingClick} />
+        <SpecialSetting language={language} text={this.state.text} setText={this.setTextFunc} onClick={this.handleButtonSpecialSettingClick} />
       </div>
     );
   }
