@@ -52,7 +52,7 @@ class TextEditor extends Component {
     const { language, color, fontSize } = this.state;
     return (
       <div className="keyboard-container">
-        <TextArea text={this.state.text} color={color} />
+        <TextArea text={this.state.text} color={color} fontSize={fontSize} />
         <ChangeLang language={language} onChange={this.handleLanguageChange} />
         <Keyboard language={language} text={this.state.text} onClick={this.handleClickTextArea} />
         <Size fontSize={fontSize} onClick={this.changeFontSize} />
