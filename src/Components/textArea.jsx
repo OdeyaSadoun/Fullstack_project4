@@ -6,18 +6,14 @@ class TextArea extends Component {
         super(props);
         console.log('textarea-ctor', props);
         this.state = {
-            text: ''
+            text: this.props.text
         };
     }
-    updateText = (value) => {
-        this.setState({
-            text: this.state.text + value
-        });
-    }
+
     render() {
         return (
             <div>
-                <p >{this.state.text}</p>
+                <p >{ this.props.text}</p>
             </div>
         );
     }

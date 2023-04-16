@@ -14,12 +14,9 @@ class Keyboard extends Component {
     }
   }
 
-  handleChange = event => {
-    this.setState({ text: event.target.value });
-  };
-  handleClick = (value) => {
+  handleClick = (value) => { //click on keyboard
     console.log(`Selected key: ${value}`);
-    // this.props.updateText(value);
+    this.props.onClick(value);
   };
 
   handleKeyPress = key => {
@@ -145,7 +142,7 @@ class Keyboard extends Component {
               <button
                 key={index}
                 className={classes}
-                onClick={() => { this.handleKeyPress(key.value);}}              >
+                onClick={() => { this.handleKeyPress(key.value); this.handleClick(key.value)}}              >
                 {this.state.capslock ? key.value.toUpperCase() : key.value.toLowerCase()}
               </button>
             );
