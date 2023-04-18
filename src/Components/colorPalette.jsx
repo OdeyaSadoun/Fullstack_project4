@@ -22,9 +22,10 @@ class ColorPalette extends Component {
       "#EE82EE"  // violet
     ];
   
-    const handleClick = (color) => {
+    const handleChangeColor = (color) => {
       // Do something with the selected color
       console.log(`Selected color: ${color}`);
+      this.props.onClick(color);
     };
   
     return (
@@ -40,7 +41,7 @@ class ColorPalette extends Component {
               cursor: "pointer",
               border: "1px solid black"
             }}
-            onClick={() => handleClick(color)}
+            onClick={() => handleChangeColor(color)}
           ></div>
         ))}
       </div>

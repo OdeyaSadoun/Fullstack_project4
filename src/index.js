@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client';
 //import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Counter  from '../src/Components/counter';
 import TextEditor from './Components/textEditor';
 import Keyboard from './Components/keyboard';
 import Size from './Components/sizes';

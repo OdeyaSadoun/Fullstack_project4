@@ -4,48 +4,39 @@ import '../CSS/specialSetting.css';
 class SpecialSetting extends Component {
     constructor(props) {
         super(props);
+        console.log('SpecialSetting - ctor', props)
         this.state = {
-            text: ''        };
+            text: this.props.text,
+            language: this.props.language
+        }
     }
 
-    handleKeyPress = key => {
-        if (key === 'Clear all') {
-            this.setState({ text: '' });
-        } else if (key === 'Upper all') {
-            this.setState(prevState => ({
-                text: prevState.text.toUpperCase()
-            }));
-        } else if (key === 'Lower all') {
-            this.setState(prevState => ({
-                text: prevState.text.toLowerCase()
-            }));
+    handleClick = key => {
+        let { text, language } = this.props; //for real time updates
+        console.log('text', text);
+        if (language === 'english') {
+            if (key === 'Clear all') {
+                text = '';
+            } else if (key === 'Upper all') {
+                console.log('upper', text);
+                text = text.toUpperCase();
+            } else if (key === 'Lower all') {
+                console.log('lower', text);
+                text = text.toLowerCase();
+            }
         }
+        this.props.onClick(text);
     };
 
-    render() {
-        let options = [
-            { label: 'Clear all', value: 'Clear all' },
-            { label: 'Upper all', value: 'Upper all' },
-            { label: 'Lower all', value: 'Lower all' }
-        ];
-        return (
-            <div className="options-container">
-                {options.map((key, index) => {
-                    let classes = 'option specials';
-                    if (key.value === 'Clear all') classes += 'option-clear-all';
-                    if (key.value === 'Upper all') classes += 'option-upper-all';
-                    if (key.value === 'Lower all') classes += 'option-lower-all';
 
-                    return (
-                        <button
-                            key={index}
-                            className={classes}
-                            onClick={() => this.handleKeyPress(key.value)}
-                        >
-                            {key.value}
-                        </button>
-                    );
-                })}
+
+    render() {
+
+        return (
+            <div className="options-container option specials">
+                <button className='option-clear-all' value={'Clear all'} onClick={() => this.handleClick('Clear all')}>Clear all</button>
+                <button className='option-upper-all' value={'Upper all'} onClick={() => this.handleClick('Upper all')}>Upper all</button>
+                <button className='option-lower-all' value={'Lower all'} onClick={() => this.handleClick('Lower all')}>Lower all</button>
             </div>
         );
     }

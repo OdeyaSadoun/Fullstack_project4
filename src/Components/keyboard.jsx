@@ -1,40 +1,37 @@
 import React, { Component } from 'react';
 import '../CSS/keyboard.css';
 import ChangeLang from './changeLang';
+import TextArea from './textArea';
 
 class Keyboard extends Component {
   constructor(props) {
     super(props);
-    // console.log(props);
+    console.log('keyboard-ctor', props);
+    console.log(props);
     this.state = {
-    //   text: '',
-      capslock: false
-    //   language: props
+      capslock: false,
+      text: this.props.text
     }
   }
 
-  handleChange = event => {
-    this.setState({ text: event.target.value });
-  };
-
-  handleKeyPress = key => {
-    if (key === 'DEL') {
-      this.setState(prevState => ({
-        text: prevState.text.slice(0, -1)
-      }));
-    } else if (key === 'SPACE') {
-      this.setState(prevState => ({
-        text: prevState.text + ' '
-      }));
-    } else if (key === 'CAPSLOCK') {
-      this.setState(prevState => ({
-        capslock: !prevState.capslock
-      }));
-    } else {
-      const letter = this.state.capslock ? key.toUpperCase() : key.toLowerCase();
-      this.setState(prevState => ({
-        text: prevState.text + letter
-      }));
+  handleClick = (value) => { //click on keyboard
+    console.log(`Selected key: ${value}`);
+    let { text} = this.props; //for real time updates
+    let letter = this.state.capslock ? value.toUpperCase() : value.toLowerCase();
+    if (value === 'SPACE') {
+      letter = ' ';
+      this.props.onClick(letter);
+    }
+    else if (value === 'CAPSLOCK') {
+      this.setState(prevState => ({ capslock: !prevState.capslock }));
+    }
+    else if (value === 'DEL') {
+      text = text.substring(0, text.length - 1);
+      console.log(text)
+      this.props.setTextFunc(text);
+    }
+    else {
+      this.props.onClick(letter);
     }
   };
 
@@ -96,32 +93,32 @@ class Keyboard extends Component {
       { label: '8', value: '8' },
       { label: '9', value: '9' },
       { label: '0', value: '0' },
-      { label: 'Q', value: 'Q' },
-      { label: 'W', value: 'W' },
-      { label: 'E', value: 'E' },
-      { label: 'R', value: 'R' },
-      { label: 'T', value: 'T' },
-      { label: 'Y', value: 'Y' },
-      { label: 'U', value: 'U' },
-      { label: 'I', value: 'I' },
-      { label: 'O', value: 'O' },
-      { label: 'P', value: 'P' },
-      { label: 'A', value: 'A' },
-      { label: 'S', value: 'S' },
-      { label: 'D', value: 'D' },
-      { label: 'F', value: 'F' },
-      { label: 'G', value: 'G' },
-      { label: 'H', value: 'H' },
-      { label: 'J', value: 'J' },
-      { label: 'K', value: 'K' },
-      { label: 'L', value: 'L' },
-      { label: 'Z', value: 'Z' },
-      { label: 'X', value: 'X' },
-      { label: 'C', value: 'C' },
-      { label: 'V', value: 'V' },
-      { label: 'B', value: 'B' },
-      { label: 'N', value: 'N' },
-      { label: 'M', value: 'M' },
+      { label: 'Q', value: 'q' },
+      { label: 'W', value: 'w' },
+      { label: 'E', value: 'e' },
+      { label: 'R', value: 'r' },
+      { label: 'T', value: 't' },
+      { label: 'Y', value: 'y' },
+      { label: 'U', value: 'u' },
+      { label: 'I', value: 'i' },
+      { label: 'O', value: 'o' },
+      { label: 'P', value: 'p' },
+      { label: 'A', value: 'a' },
+      { label: 'S', value: 's' },
+      { label: 'D', value: 'd' },
+      { label: 'F', value: 'f' },
+      { label: 'G', value: 'g' },
+      { label: 'H', value: 'h' },
+      { label: 'J', value: 'j' },
+      { label: 'K', value: 'k' },
+      { label: 'L', value: 'l' },
+      { label: 'Z', value: 'z' },
+      { label: 'X', value: 'x' },
+      { label: 'C', value: 'c' },
+      { label: 'V', value: 'v' },
+      { label: 'B', value: 'b' },
+      { label: 'N', value: 'n' },
+      { label: 'M', value: 'm' },
       { label: 'DEL', value: 'DEL' },
       { label: 'SPACE', value: 'SPACE' },
       { label: 'CAPSLOCK', value: 'CAPSLOCK' }
@@ -129,7 +126,6 @@ class Keyboard extends Component {
     const keyboard = this.props.language === 'english' ? EnglishKeys : HebrewKeys;
     return (
       <div className="keyboard-container">
-        
 
         <div className="keyboard keys">
           {keyboard.map((key, index) => {
@@ -141,8 +137,7 @@ class Keyboard extends Component {
               <button
                 key={index}
                 className={classes}
-                onClick={() => this.handleKeyPress(key.value)}
-              >
+                onClick={() => { this.handleClick(key.value) }}              >
                 {this.state.capslock ? key.value.toUpperCase() : key.value.toLowerCase()}
               </button>
             );
