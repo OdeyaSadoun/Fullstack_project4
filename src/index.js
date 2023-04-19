@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+//import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import TextEditor from './Components/textEditor';
@@ -8,13 +8,14 @@ import Keyboard from './Components/keyboard';
 import Size from './Components/sizes';
 import TextArea from './Components/textArea';
 import ColorPalette from './Components/colorPalette';
-import SpecialSetting from './Components/specialSetting';
-
+//import SpecialSetting from './Components/specialSetting';
+import Game from './Components/game';
+import GameBoard from './Components/gameBoard';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <TextEditor/>
+    <Game/>
   </React.StrictMode>
 );
 
