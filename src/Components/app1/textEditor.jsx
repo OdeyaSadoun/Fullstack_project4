@@ -25,7 +25,6 @@ class TextEditor extends Component {
   }
 
   handleDelLastOne = () => {
-    console.log('jjj')
     const { text: currentText, delete: isDelete } = this.state;
     const newText = currentText || [];
     newText.pop();
