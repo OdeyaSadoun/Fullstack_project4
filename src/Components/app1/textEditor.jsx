@@ -12,7 +12,7 @@ class TextEditor extends Component {
     super(props);
     console.log('textEditor-ctor', props);
     this.state = {
-      text: '',
+      text: [],
       language: 'english',
       color: 'black',
       capslock: false,
@@ -24,32 +24,35 @@ class TextEditor extends Component {
     }
   }
 
-  handleIsDelete = () => {
-    this.setState({ delete: true });
-  }
-  handleIsNotDelete = () => {
-    this.setState({ delete: false });
+  handleDelLastOne = () => {
+    console.log('jjj')
+    const { text: currentText, delete: isDelete } = this.state;
+    const newText = currentText || [];
+    newText.pop();
+    this.setState({ text: newText });
   }
 
   handleClickTextArea = (text) => {
-    if (this.state.delete) {
-      this.setState({ text: text });
-    } else {
-      this.setState({ text: this.state.text + text });
-    }
+    const { text: currentText, delete: isDelete } = this.state;
+    const newText = currentText || [];
+    console.log(isDelete)
+
+    newText.push(text);
+
+    console.log('newText', newText);
+    this.setState({ text: newText });
   }
 
   handleButtonSpecialSettingClick = (text) => {
     console.log('special-buttons', text);
     this.setState({ text: text });
   }
-  // function to update the color displayed in Component A
+
   onHandleChangeColor = (color) => {
     console.log('textEditor-color', color);
     this.setState({ color: color });
   }
 
-  // function to update the font size displayed in Component A
   changeFontSize = (fontSize) => {
     this.setState({ fontSize: fontSize });
   }
@@ -69,7 +72,7 @@ class TextEditor extends Component {
       <div className="keyboard-container">
         <TextArea text={this.state.text} color={color} fontSize={fontSize} fontFamily={fontFamily} />
         <ChangeLang language={language} onChange={this.handleLanguageChange} />
-        <Keyboard language={language} text={this.state.text} onIsDelete={this.handleIsDelete} onIsNotDelete={this.handleIsNotDelete} setDelete={this.isDelLastOneFunc} onClick={this.handleClickTextArea} />
+        <Keyboard language={language} text={this.state.text} onIsDelete={() => this.handleDelLastOne} onClick={this.handleClickTextArea} />
         <Size fontSize={fontSize} onClick={this.changeFontSize} />
         <ChangeFontFamily fontFamily={fontFamily} onChange={this.handleFontFamilyChange} />
         <ColorPalette onClick={this.onHandleChangeColor} />
