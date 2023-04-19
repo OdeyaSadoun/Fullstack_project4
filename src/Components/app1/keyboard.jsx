@@ -15,8 +15,10 @@ class Keyboard extends Component {
   }
 
   handleClick = (value) => { //click on keyboard
-    console.log(`Selected key: ${value}`);
-    let { text} = this.props; //for real time updates
+    // console.log(`Selected key: ${value}`);
+    let {text} = this.props; //for real time updates
+    this.props.onIsNotDelete();
+    console.log(this.props.onIsNotDelete())
     let letter = this.state.capslock ? value.toUpperCase() : value.toLowerCase();
     if (value === 'SPACE') {
       letter = ' ';
@@ -26,9 +28,9 @@ class Keyboard extends Component {
       this.setState(prevState => ({ capslock: !prevState.capslock }));
     }
     else if (value === 'DEL') {
-      text = text.substring(0, text.length - 1);
-      console.log(text)
-      this.props.setTextFunc(text);
+      text = text.slice(0, -1); // remove the last character from the text string
+      this.props.onIsDelete();
+      this.props.onClick(text); 
     }
     else {
       this.props.onClick(letter);

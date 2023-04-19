@@ -5,16 +5,14 @@ class TextArea extends Component {
     constructor(props) {
         super(props);
         console.log('textarea-ctor', props);
-        this.state = {
-            text: this.props.text
-        };
+
     }
 
     render() {
-        const {color, fontSize ,fontFamily} = this.props;
+        const { color, fontSize, fontFamily } = this.props;
         return (
             <div>
-                <p style={{color: color, fontSize: fontSize, fontFamily: fontFamily}} >{ this.props.text}</p>
+                <p style={{ color: color, fontSize: fontSize, fontFamily: fontFamily }} >{this.props.text}</p>
             </div>
         );
     }

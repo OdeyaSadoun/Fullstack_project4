@@ -13,26 +13,34 @@ class TextEditor extends Component {
     console.log('textEditor-ctor', props);
     this.state = {
       text: '',
-      setText: '',
       language: 'english',
       color: 'black',
       capslock: false,
+      delete: false,
+      setIsDelete: '',
+      setIsNotDelete: '',
       fontFamily: "'Franklin Gothic Medium', 'Arial Narrow', Arial, 'sans serif'",
-      fontSize: 11
+      fontSize: 15
     }
   }
-  setTextFunc = (text) => {
-    this.state.text = text;
+
+  handleIsDelete = () => {
+    this.setState({ delete: true });
+  }
+  handleIsNotDelete = () => {
+    this.setState({ delete: false });
   }
 
   handleClickTextArea = (text) => {
-    this.setState({
-      text: this.state.text + text
-    });
+    if (this.state.delete) {
+      this.setState({ text: text });
+    } else {
+      this.setState({ text: this.state.text + text });
+    }
   }
 
   handleButtonSpecialSettingClick = (text) => {
-    console.log('special-buttons', text)
+    console.log('special-buttons', text);
     this.setState({ text: text });
   }
   // function to update the color displayed in Component A
@@ -59,13 +67,13 @@ class TextEditor extends Component {
     const { language, color, fontSize, fontFamily } = this.state;
     return (
       <div className="keyboard-container">
-        <TextArea text={this.state.text} color={color} fontSize={fontSize} fontFamily={ fontFamily} />
+        <TextArea text={this.state.text} color={color} fontSize={fontSize} fontFamily={fontFamily} />
         <ChangeLang language={language} onChange={this.handleLanguageChange} />
-        <Keyboard language={language} text={this.state.text} onClick={this.handleClickTextArea} />
+        <Keyboard language={language} text={this.state.text} onIsDelete={this.handleIsDelete} onIsNotDelete={this.handleIsNotDelete} setDelete={this.isDelLastOneFunc} onClick={this.handleClickTextArea} />
         <Size fontSize={fontSize} onClick={this.changeFontSize} />
-        <ChangeFontFamily  fontFamily={fontFamily} onChange={this.handleFontFamilyChange}/>
+        <ChangeFontFamily fontFamily={fontFamily} onChange={this.handleFontFamilyChange} />
         <ColorPalette onClick={this.onHandleChangeColor} />
-        <SpecialSetting language={language} text={this.state.text} setText={this.setTextFunc} onClick={this.handleButtonSpecialSettingClick} />
+        <SpecialSetting language={language} text={this.state.text} onClick={this.handleButtonSpecialSettingClick} />
       </div>
     );
   }
