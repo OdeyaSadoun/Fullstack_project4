@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../CSS/colorPalette.css';
+import '../../CSS/app1/colorPalette.css';
 
 class ColorPalette extends Component {
   constructor(props) {

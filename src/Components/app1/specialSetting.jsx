@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../CSS/specialSetting.css';
+import '../../CSS/app1/specialSetting.css';
 
 class SpecialSetting extends Component {
     constructor(props) {

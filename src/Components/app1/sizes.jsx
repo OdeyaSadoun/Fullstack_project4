@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../CSS/sizes.css';
+import '../../CSS/app1/sizes.css';
 
 class Size extends Component {
     constructor(props) {

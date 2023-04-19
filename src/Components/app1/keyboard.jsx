@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../CSS/keyboard.css';
+import '../../CSS/app1/keyboard.css';
 import ChangeLang from './changeLang';
 import TextArea from './textArea';
 
