@@ -11,10 +11,10 @@ class TextArea extends Component {
     }
 
     render() {
-        const {color, fontSize} = this.props;
+        const {color, fontSize ,fontFamily} = this.props;
         return (
             <div>
-                <p style={{color: color, fontSize: fontSize}} >{ this.props.text}</p>
+                <p style={{color: color, fontSize: fontSize, fontFamily: fontFamily}} >{ this.props.text}</p>
             </div>
         );
     }

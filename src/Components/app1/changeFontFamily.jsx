@@ -8,22 +8,23 @@ class ChangeFontFamily extends Component {
     // console.log('changlang-ctor', props);
   }
 
-  handleChange = (event) => { //change language
-    const language = event.target.value;
-    this.props.onChange(language);
+  handleChange = (event) => { 
+    const fontFamily = event.target.value;
+    console.log('change lang', fontFamily)
+    this.props.onChange(fontFamily);
   }
 
   render() {
-    const { fontFamily } = this.props
+    const { fontFamily } = this.props;
     ;
 
     return (
       <div>
-        <label htmlFor="language">Select language:</label>
+        <label htmlFor="font_family">Select font family:</label>
         <select id="font" className="font" value={fontFamily} onChange={this.handleChange}>
-          <option value="Courier_New_Courier_monospace">'Courier New', Courier, monospace</option>
-          <option value="Franklin_Gothic_Medium_Arial_Narrow_Arial_sans-serif">'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif</option>
-          <option value="Times New Roman_Times_serif">'Times New Roman', Times, serif</option>
+          <option value="'Courier New', Courier, monospace">'Courier New', Courier, monospace</option>
+          <option value="'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif">'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif</option>
+          <option value="'Times New Roman', Times, serif">'Times New Roman', Times, serif</option>
 
         </select>
 

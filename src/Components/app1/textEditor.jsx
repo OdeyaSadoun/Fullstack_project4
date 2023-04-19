@@ -17,7 +17,7 @@ class TextEditor extends Component {
       language: 'english',
       color: 'black',
       capslock: false,
-      fontFamily: "'Franklin Gothic Medium', Arial Narrow', Arial 'sans serif'",
+      fontFamily: "'Franklin Gothic Medium', 'Arial Narrow', Arial, 'sans serif'",
       fontSize: 11
     }
   }
@@ -50,15 +50,20 @@ class TextEditor extends Component {
     this.setState({ language: language, capslock: false });
   }
 
+  handleFontFamilyChange = (fontFamily) => {
+    console.log(fontFamily);
+    this.setState({ fontFamily: fontFamily });
+  }
+
   render() {
     const { language, color, fontSize, fontFamily } = this.state;
     return (
       <div className="keyboard-container">
-        <TextArea text={this.state.text} color={color} fontSize={fontSize} />
+        <TextArea text={this.state.text} color={color} fontSize={fontSize} fontFamily={ fontFamily} />
         <ChangeLang language={language} onChange={this.handleLanguageChange} />
         <Keyboard language={language} text={this.state.text} onClick={this.handleClickTextArea} />
         <Size fontSize={fontSize} onClick={this.changeFontSize} />
-        <ChangeFontFamily fontFamily={fontFamily}/>
+        <ChangeFontFamily  fontFamily={fontFamily} onChange={this.handleFontFamilyChange}/>
         <ColorPalette onClick={this.onHandleChangeColor} />
         <SpecialSetting language={language} text={this.state.text} setText={this.setTextFunc} onClick={this.handleButtonSpecialSettingClick} />
       </div>
