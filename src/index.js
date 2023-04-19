@@ -15,7 +15,7 @@ import GameBoard from './Components/app2/gameBoard';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Game/>
+    <TextEditor/>
   </React.StrictMode>
 );
 
