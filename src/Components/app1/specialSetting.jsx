@@ -17,17 +17,18 @@ class SpecialSetting extends Component {
 
         if (key === 'Upper all') {
             console.log('upper', text);
-            text = text.map(str => str.toUpperCase());
+            text = text.map(str => typeof str === 'string' ? str.toUpperCase() : str);
+            // text = text.map(str => str.value.toUpperCase());
             this.props.onClick(text);
 
         } else if (key === 'Lower all') {
             console.log('lower', text);
-            text = text.map(str => str.toLowerCase());
+            text = text.map(str => typeof str === 'string' ? str.toLowerCase() : str);
             this.props.onClick(text);
         }
 
         if (key === 'Clear all') {
-            text = '';
+            text = [];       
         }
         else if (key === 'All') {
             this.props.onAllButton()();

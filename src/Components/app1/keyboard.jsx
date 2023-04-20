@@ -76,6 +76,7 @@ class Keyboard extends Component {
       { label: 'ל', value: 'ל' },
       { label: 'ך', value: 'ך' },
       { label: 'ף', value: 'ף' },
+      { label: ',', value: ',' },
       { label: 'ז', value: 'ז' },
       { label: 'ס', value: 'ס' },
       { label: 'ב', value: 'ב' },

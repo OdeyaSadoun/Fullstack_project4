@@ -20,9 +20,36 @@ class TextEditor extends Component {
       setIsDelete: '',
       setIsNotDelete: '',
       fontFamily: "'Franklin Gothic Medium', 'Arial Narrow', Arial, 'sans serif'",
-      fontSize: 15
+      fontSize: 15,
+      all: false,
+      single: true
     }
   }
+
+
+  handleClickTextArea = (char) => {
+    const { text: currentText, delete: isDelete, color, fontSize, fontFamily } = this.state;
+    const newText = currentText || [];
+    console.log(isDelete)
+    if (isDelete) {
+      newText.pop();
+    } else {
+      newText.push({ value: char, color, fontSize, fontFamily });
+    }
+    console.log('newText', newText);
+    this.setState({ text: newText });
+  }
+
+
+  handleAllButton = () => {
+    console.log('all')
+    this.setState({ all: true, single: false });
+  }
+  handleSingleButton = () => {
+    console.log('single')
+    this.setState({ single: true, all: false });
+  }
+
 
   handleDelLastOne = () => {
     const { text: currentText, delete: isDelete } = this.state;
@@ -31,16 +58,14 @@ class TextEditor extends Component {
     this.setState({ text: newText });
   }
 
-  handleClickTextArea = (text) => {
-    const { text: currentText, delete: isDelete } = this.state;
-    const newText = currentText || [];
-    console.log(isDelete)
-
-    newText.push(text);
-
-    console.log('newText', newText);
-    this.setState({ text: newText });
-  }
+  // handleClickTextArea = (text) => {
+  //   const { text: currentText, delete: isDelete } = this.state;
+  //   const newText = currentText || [];
+  //   console.log(isDelete)
+  //   newText.push(text);
+  //   console.log('newText', newText);
+  //   this.setState({ text: newText, color: this.state.color, fontSize: this.state.fontSize, fontFamily: this.state.fontFamily });
+  // }
 
   handleButtonSpecialSettingClick = (text) => {
     console.log('special-buttons', text);
@@ -49,20 +74,26 @@ class TextEditor extends Component {
 
   onHandleChangeColor = (color) => {
     console.log('textEditor-color', color);
-    this.setState({ color: color });
+    if (!this.state.all) {
+      this.setState({ color: color });
+    }
   }
 
   changeFontSize = (fontSize) => {
-    this.setState({ fontSize: fontSize });
+    if (!this.state.all) {
+      this.setState({ fontSize: fontSize });
+    }
   }
 
   handleLanguageChange = (language) => {
-    this.setState({ language: language, capslock: false });
+      this.setState({ language: language, capslock: false });
   }
 
   handleFontFamilyChange = (fontFamily) => {
     console.log(fontFamily);
-    this.setState({ fontFamily: fontFamily });
+    if (!this.state.all) {
+      this.setState({ fontFamily: fontFamily });
+    }
   }
 
   render() {
@@ -75,7 +106,7 @@ class TextEditor extends Component {
         <Size fontSize={fontSize} onClick={this.changeFontSize} />
         <ChangeFontFamily fontFamily={fontFamily} onChange={this.handleFontFamilyChange} />
         <ColorPalette onClick={this.onHandleChangeColor} />
-        <SpecialSetting language={language} text={this.state.text} onClick={this.handleButtonSpecialSettingClick} />
+        <SpecialSetting language={language} text={this.state.text} onAllButton={() => this.handleAllButton} onSingleButton={() => this.handleSingleButton} onClick={this.handleButtonSpecialSettingClick} />
       </div>
     );
   }
