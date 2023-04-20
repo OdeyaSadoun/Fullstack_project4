@@ -29,6 +29,7 @@ class SpecialSetting extends Component {
 
         if (key === 'Clear all') {
             text = [];       
+            this.props.onClick(text);
         }
         else if (key === 'All') {
             this.props.onAllButton()();

@@ -9,13 +9,14 @@ import Size from './Components/app1/sizes';
 import TextArea from './Components/app1/textArea';
 import ColorPalette from './Components/app1/colorPalette';
 //import SpecialSetting from './Components/specialSetting';
-import Game from './Components/app2/game';
-import GameBoard from './Components/app2/gameBoard';
+
+import Gamecontainer from './Components/app2/gameContainer';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <TextEditor/>
+    <Gamecontainer/>
+    {/* <TextEditor/> */}
   </React.StrictMode>
 );
 
